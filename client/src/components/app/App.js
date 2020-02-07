@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 import { grey, deepOrange } from '@material-ui/core/colors';
 import { AppBar, CssBaseline,Toolbar, Typography } from '@material-ui/core';
@@ -28,7 +27,7 @@ function App(props) {
         <div className="App">
           <AppBar position="static" color="secondary">
             <Toolbar>
-              <div><img className="logo" src={train}/></div>
+              <div><img className="logo" alt="logo" src={train}/></div>
               <Typography variant="h6" color="inherit">
                 speedtest
               </Typography>

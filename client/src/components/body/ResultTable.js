@@ -1,25 +1,12 @@
 import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import {
-  Card, CardContent
-} from '@material-ui/core';
 import MaterialTable from "material-table";
 
 
-const useStyles = makeStyles(theme => ({
-  card: {
-    maxWidth: 345,
-    padding: 5
-  },
-}));
-
-
-export default function ResultCard(props) {
-  const classes = useStyles();
+export default function ResultTable(props) {
 
   let columnNames = [
-    { title: "a", field: "property" },
-    { title: "a", field: "value" }
+    { title: "", field: "property" },
+    { title: "", field: "value" }
   ];
   let json = JSON.parse(props.json);
   let keys = Object.keys(json);
@@ -30,8 +17,6 @@ export default function ResultCard(props) {
   }
 
   return (
-    <Card color="primary" raised={true} className={classes.card}>
-      <CardContent>
       <MaterialTable
                 data={data}
                 columns={columnNames}
@@ -43,7 +28,5 @@ export default function ResultCard(props) {
                     header: false
                 }}
             />
-      </CardContent>
-    </Card>
   );
 }

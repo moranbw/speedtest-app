@@ -31,14 +31,14 @@ app.get('/speedtest/test', (req, res) => {
                 let downMbps = getMegabitsPerSecond(result.download.bytes, result.download.elapsed);
                 let upMbps = getMegabitsPerSecond(result.upload.bytes, result.upload.elapsed);
                 let response = {
-                    "jitter": result.ping.jitter,
-                    "latency": result.ping.latency + " ms",
+                    "jitter": result.ping.jitter.toFixed(2),
+                    "latency": result.ping.latency.toFixed(2) + " ms",
                     "download": downMbps.toFixed(2) + " Mbps",
                     "upload": upMbps.toFixed(2) + " Mbps",
-                    "packetLoss": result.packetLoss,
+                    "packet loss": result.packetLoss === undefined ? 0.00 : result.packetLoss.toFixed(2),
                     "isp": result.isp,
-                    "serverName": result.server.name,
-                    "serverLocation": result.server.location
+                    "server name": result.server.name,
+                    "server location": result.server.location
                 }
                 res.send(response);
             }
