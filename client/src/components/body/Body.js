@@ -27,14 +27,15 @@ export default function Body(props) {
       return <Grid item xs={12}><ResultTable json={state.json} /></Grid>;
     }
     return null;
-  }
+  };
+
   const ConditionalLoad = (props) => {
     const isLoading = props.isLoading;
     if (isLoading) {
       return <Grid item xs={12} className={classes.progress}><LinearProgress color="secondary" /></Grid>;
     }
     return <Grid item xs={12}><Button onClick={onClick} variant="contained" color="secondary">Run Speed Test</Button></Grid>;
-  }
+  };
 
   function onClick() {
     setState({ isLoading: true, json: "" });
@@ -46,7 +47,7 @@ export default function Body(props) {
         console.log(aJson);
         setState({ isLoading: false, json: JSON.stringify(aJson) });
       });
-  }
+  };
 
   return (
     <Paper className={classes.root} elevation={10}>
