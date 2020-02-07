@@ -17,7 +17,7 @@ const server = require('http').Server(app);
 app.get('/speedtest/test', (req, res) => {
     console.log(req.body);
 
-    exec('speedtest --format=json', (err, stdout, stderr) => {
+    exec('speedtest --accept-license --format=json', (err, stdout, stderr) => {
         if (err) {
             //some err occurred
             console.error(err)
