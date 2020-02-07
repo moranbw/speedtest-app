@@ -1,6 +1,6 @@
 import React from 'react';
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
-import { grey, deepOrange } from '@material-ui/core/colors';
+import { grey } from '@material-ui/core/colors';
 import { AppBar, CssBaseline,Toolbar, Typography } from '@material-ui/core';
 import Body from "../body/Body";
 
@@ -13,7 +13,7 @@ function App(props) {
   const theme = createMuiTheme({
     palette: {
       primary: { main: grey[300] },
-      secondary: { main: deepOrange[500] },
+      secondary: { main: "#3b88c3" },
 
     },
     typography: {
@@ -25,7 +25,7 @@ function App(props) {
     <CssBaseline>
       <MuiThemeProvider theme={theme}>
         <div className="App">
-          <AppBar position="static" color="secondary">
+          <AppBar position="static" color="primary">
             <Toolbar>
               <div><img className="logo" alt="logo" src={train}/></div>
               <Typography variant="h6" color="inherit">

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, Grid, LinearProgress, Paper } from '@material-ui/core';
+import { Button, Container, Grid, LinearProgress, Paper } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import ResultTable from "./ResultTable";
 
@@ -50,11 +50,13 @@ export default function Body(props) {
   };
 
   return (
-    <Paper className={classes.root} elevation={10}>
-      <Grid container direction="column" justify='center' alignItems="center" spacing={4}>
-        <ConditionalResult json={state.json} />
-        <ConditionalLoad isLoading={state.isLoading} />
-      </Grid>
-    </Paper>
+    <Container fixed>
+      <Paper className={classes.root} elevation={10}>
+        <Grid container direction="column" justify='center' alignItems="center" spacing={4}>
+          <ConditionalResult json={state.json} />
+          <ConditionalLoad isLoading={state.isLoading} />
+        </Grid>
+      </Paper>
+    </Container>
   );
 }
