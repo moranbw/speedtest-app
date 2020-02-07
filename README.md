@@ -29,3 +29,7 @@ Example use-case: test "wired speed" of a computer connected via hard-wired ethe
 * run application
     * `npm run start`
 * application should be running at [http://localhost:5000/speedtest](http://)
+
+### docker install
+-----
+coming shortly...
