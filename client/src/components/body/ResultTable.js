@@ -17,16 +17,16 @@ export default function ResultTable(props) {
   }
 
   return (
-      <MaterialTable
-                data={data}
-                columns={columnNames}
-                options={{
-                    padding: "dense",
-                    toolbar: false,
-                    paging: false,
-                    showTitle: false,
-                    header: false
-                }}
-            />
+    <MaterialTable
+      data={data}
+      columns={columnNames}
+      options={{
+        padding: "dense",
+        toolbar: false,
+        paging: false,
+        showTitle: false,
+        header: false
+      }}
+    />
   );
 }
