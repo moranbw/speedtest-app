@@ -12,7 +12,7 @@ Node.JS service with React frontend using Material-UI.
 
 **installation**
 * clone repository
-    * `git clone ***REMOVED***`
+    * `git clone https://github.com/moranbw/speedtest-app.git`
 * navigate to application
 * install server dependencies
     * `npm install'
