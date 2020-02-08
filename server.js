@@ -1,5 +1,6 @@
 const express = require('express');
 const { exec } = require('child_process');
+const fs = require('fs');
 const app = express();
 const port = process.env.PORT || 5000;
 
@@ -49,14 +50,10 @@ app.get('/speedtest/test', (req, res) => {
     });
 });
 
-//if production, serve static content
-if (process.env.NODE_ENV === 'production') {
+//if built client exists, serve static content
+if (fs.existsSync("client/build/index.html")) {
     console.log("production");
     app.use('/speedtest', express.static('client/build'));
-    const path = require('path');
-    app.get('/speedtest', (req, res) => {
-        res.sendFile(path.resolve(__dirname, 'client/public', 'index.html'))
-    });
 }
 
 // console.log that your server is up and running
