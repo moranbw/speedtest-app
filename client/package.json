@@ -32,5 +32,5 @@
     ]
   },
   "proxy": "http://localhost:5000/speedtest",
-  "homepage": "***REMOVED***"
+  "homepage": "https://yourserver.com/speedtest"
 }
