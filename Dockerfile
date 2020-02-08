@@ -12,13 +12,21 @@ RUN apt-get update && \
         && \
     apt-get install -y --no-install-recommends speedtest \
         && \
-    mkdir /app
+    mkdir /app /build-tmp /app/client
 
-COPY * /app/
-       
+COPY . /build-tmp/
+
+RUN cd /build-tmp \
+        && \
+    npm run deploy \
+        && \
+    cp -rt /app/ *.json node_modules server.js \
+        && \
+    cp -r client/build /app/client/
+
 WORKDIR /app
-
-RUN npm run deploy
+    
+RUN rm -rf /build-tmp
 
 EXPOSE 5000
 CMD npm run start
