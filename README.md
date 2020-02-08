@@ -15,9 +15,9 @@ Example use-case: test "wired speed" of a computer connected via hard-wired ethe
 **installation**
 * clone repository
     * `git clone https://github.com/moranbw/speedtest-app.git`
-* navigate to application
+* navigate to application directory
 * install server dependencies
-    * `npm install'
+    * `npm install`
 * install client dependencies
     * `npm install --prefix client`
 * build client application
@@ -29,3 +29,7 @@ Example use-case: test "wired speed" of a computer connected via hard-wired ethe
 * run application
     * `npm run start`
 * application should be running at [http://localhost:5000/speedtest](http://)
+
+### docker install
+-----
+coming shortly...
