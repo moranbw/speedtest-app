@@ -36,7 +36,7 @@ app.get('/speedtest/test', (req, res) => {
                     "latency": result.ping.latency.toFixed(2) + " ms",
                     "download": downMbps.toFixed(2) + " Mbps",
                     "upload": upMbps.toFixed(2) + " Mbps",
-                    "packet loss": result.packetLoss === undefined ? 0.00 : result.packetLoss.toFixed(2) + "%",
+                    "packet loss": result.packetLoss === undefined ? "0.00%" : result.packetLoss.toFixed(2) + "%",
                     "isp": result.isp,
                     "server name": result.server.name,
                     "server location": result.server.location
