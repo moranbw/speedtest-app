@@ -18,6 +18,7 @@ Example use-case: test "wired speed" of a computer connected via hard-wired ethe
 * Latest stable Node.js runtime release with npm
 * Git
 * Speedtest-CLI ([https://www.speedtest.net/apps/cli](http://))
+   * **note**: if using Windows, you need to add directory that contains speedtest.exe to system Path, so that it can be run globally. (for example: `C:\Projects\ookla-speedtest-1.0.0-win64\`
 
 **installation**
 * clone repository
