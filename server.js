@@ -2,7 +2,7 @@ const express = require('express');
 const { exec } = require('child_process');
 const fs = require('fs');
 const app = express();
-const port = process.env.PORT || 5000;
+const port = 5000;
 
 app.use(express.json());
 
@@ -15,14 +15,14 @@ app.use(function (req, res, next) {
 const server = require('http').Server(app);
 
 // create a GET route
-app.get('/speedtest/test', (req, res) => {
+app.get('/test', (req, res) => {
     console.log(req.body);
 
     exec('speedtest --accept-license --format=json', (err, stdout, stderr) => {
         if (err) {
             //some err occurred
-            console.error(err)
-            res.send({ "error": "There was an error while running the speed test." })
+            console.error(err);
+            res.send({ "error": "There was an error while running the speed test." });
         } else {
             // the *entire* stdout and stderr (buffered)
             console.log(`stdout: ${stdout}`);
@@ -40,7 +40,7 @@ app.get('/speedtest/test', (req, res) => {
                     "isp": result.isp,
                     "server name": result.server.name,
                     "server location": result.server.location
-                }
+                };
                 res.send(response);
             }
             else {
@@ -53,7 +53,7 @@ app.get('/speedtest/test', (req, res) => {
 //if built client exists, serve static content
 if (fs.existsSync("client/build/index.html")) {
     console.log("production");
-    app.use('/speedtest', express.static('client/build'));
+    app.use(express.static('client/build'));
 }
 
 // console.log that your server is up and running

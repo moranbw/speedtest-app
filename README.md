@@ -9,7 +9,7 @@ Example use-case: test "wired speed" of a computer connected via hard-wired ethe
 ### docker install
 -----
 * `docker run -d -p 5000:5000 --name speedtest-app bwmoran/speedtest-app`
-* application should be running at [http://localhost:5000/speedtest](http://)
+* application should be running at [http://localhost:5000](http://)
 
 
 ### old-fashioned install
@@ -28,15 +28,18 @@ Example use-case: test "wired speed" of a computer connected via hard-wired ethe
     * `npm run deploy`
 * run application
     * `npm run start`
-* application should be running at [http://localhost:5000/speedtest](http://)
+* application should be running at [http://localhost:5000](http://)
 
 
 ### proxy example
 -----
 **nginx**
 ```nginx
-location /speedtest {
-    proxy_pass http://your_ip_or_host:5000;
+location = /speedtest {
+    return 302 /speedtest/;
+}
+location /speedtest/ {
+    proxy_pass http://your_ip_or_host:5000/;
     proxy_set_header Host $host;
     proxy_set_header X-Real-IP $remote_addr;
     proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
