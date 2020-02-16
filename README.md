@@ -1,7 +1,7 @@
 # speedtest-app
 -----
 An internet speed test web application leveraging Speedtest-CLI ([https://www.speedtest.net/apps/cli](http://)).
-Node.JS service with React frontend using Material-UI.
+Node.js service with React frontend using Material-UI.
 
 Example use-case: test "wired speed" of a computer connected via hard-wired ethernet from any device on your network.
 

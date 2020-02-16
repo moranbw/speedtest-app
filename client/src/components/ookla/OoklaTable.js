@@ -2,9 +2,9 @@ import React from 'react';
 import MaterialTable from "material-table";
 
 
-export default function ResultTable(props) {
+export default function OoklaTable(props) {
 
-  let columnNames = [
+  let columns = [
     { title: "", field: "property" },
     { title: "", field: "value" }
   ];
@@ -19,7 +19,7 @@ export default function ResultTable(props) {
   return (
     <MaterialTable
       data={data}
-      columns={columnNames}
+      columns={columns}
       options={{
         padding: "dense",
         toolbar: false,

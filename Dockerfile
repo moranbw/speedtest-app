@@ -2,7 +2,7 @@ FROM node:12.15.0-buster-slim
 
 RUN apt-get update && \
     apt-get install -y --no-install-recommends \
-        ca-certificates gnupg1 apt-transport-https dirmngr \
+        apt-transport-https ca-certificates dirmngr gnupg1 iperf3 \
         && \
     apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 379CE192D401AB61 \
         && \
