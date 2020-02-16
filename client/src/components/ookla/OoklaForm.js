@@ -1,10 +1,10 @@
 import React from 'react';
 import {
     Button, FormControl, FormControlLabel, FormGroup, Grid,
-    MenuItem, Select, Snackbar, Switch
+    MenuItem, Select, Switch
 } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
-import ConnectionSnackbarContent from '../snackbar/ConnectionSnackbarContent';
+import { useStateValue } from '../../state';
 import catchFetch from '../../util/catchFetch';
 
 const useStyles = makeStyles(theme => ({
@@ -26,16 +26,7 @@ const useStyles = makeStyles(theme => ({
 
 export default function OoklaForm(props) {
     const classes = useStyles();
-    const [state, setState] = React.useReducer(
-        (state, newState) => ({ ...state, ...newState }),
-        {
-            useServer: props.formState.useServer,
-            serverJson: props.formState.serverJson,
-            server: props.formState.server,
-            requestUrl: props.formState.requestUrl
-        });
-    const [errorSnackbarOpen, setErrorSnackbarOpen] = React.useState(false);
-    const [errorSnackbarMessage, setErrorSnackbarMessage] = React.useState("Request failed...");
+    const [state, setState] = useStateValue();
 
     const handleSwitch = (event) => {
         let checked = event.target.checked;
@@ -59,9 +50,11 @@ export default function OoklaForm(props) {
                 })
                 .catch((aError) => {
                     console.log(aError.message);
-                    setErrorSnackbarMessage("Request rejected, " + aError.response.status + ": " + aError.response.statusText);
-                    setErrorSnackbarOpen(true);
-                    setState({ useServer: !checked, serverJson: "", server: "", requestUrl: "ookla/test" });
+                    setState({
+                        useServer: !checked, serverJson: "", server: "", requestUrl: "ookla/test",
+                        errorSnackbarOpen: true, 
+                        errorSnackbarMessage: "Request rejected, " + aError.response.status + ": " + aError.response.statusText
+                    });
                 });
         }
         else {
@@ -72,14 +65,6 @@ export default function OoklaForm(props) {
     const handleSelect = (event) => {
         setState({ server: event.target.value, requestUrl: "ookla/test?serverId=" + event.target.value });
     }
-
-
-    const closeSnackBar = (event, reason) => {
-        if (reason === 'clickaway') {
-            return;
-        }
-        setErrorSnackbarOpen(false);
-    };
 
     const ServerList = (props) => {
         if (props.show && props.json.length > 0) {
@@ -118,12 +103,8 @@ export default function OoklaForm(props) {
                     </FormGroup>
                     <ServerList json={state.serverJson} show={state} />
                 </FormControl>
-                <Button onClick={() => props.onClick(state)} variant="contained" color="secondary">Run Speed Test</Button>
+                <Button onClick={() => props.onClick()} variant="contained" color="secondary">Run Speed Test</Button>
             </FormControl>
-            <Snackbar open={errorSnackbarOpen} autoHideDuration={6000} onClose={closeSnackBar}>
-                <ConnectionSnackbarContent message={errorSnackbarMessage} variant={"error"}
-                    onClose={closeSnackBar} />
-            </Snackbar>
         </Grid>
     );
 }

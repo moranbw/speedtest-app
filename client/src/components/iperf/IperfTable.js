@@ -4,7 +4,7 @@ import MaterialTable from "material-table";
 
 export default function IperfTable(props) {
 
-  const createRows = (aJson, aData, aCategory) => {
+  /*const createRows = (aJson, aData, aCategory) => {
     let keys = Object.keys(aJson);
     let values = Object.values(aJson);
     let data = [];
@@ -19,7 +19,7 @@ export default function IperfTable(props) {
     });
   };
 
-  /*let columns = [
+  let columns = [
     { title: "", field: "category" },
     { title: "interval", field: "interval" },
     { title: "transfer", field: "transfer" },
@@ -36,19 +36,17 @@ export default function IperfTable(props) {
   let receiver = json.receiver;
 
   let data = [];
-  //createRow(sender, data, "sender");
-  //createRow(receiver, data, "receiver");
 
   data[0] = { statistic: "interval", sender: sender.interval, receiver: receiver.interval };
   data[1] = {
     statistic: "transfer",
-    sender: sender.transfer + " MBytes",
-    receiver: receiver.transfer + " MBytes"
+    sender: sender.transfer + " MB",
+    receiver: receiver.transfer + " MB"
   };
   data[2] = {
     statistic: "bandwidth",
-    sender: sender.bandwidth + " MBits/Sec",
-    receiver: receiver.bandwidth + " MBits/Sec"
+    sender: sender.bandwidth + " Mbps",
+    receiver: receiver.bandwidth + " Mbps"
   };
   data[3] = { statistic: "retransmits", sender: sender.retransmits, receiver: receiver.retransmits };
 

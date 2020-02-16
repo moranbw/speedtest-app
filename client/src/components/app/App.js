@@ -4,6 +4,7 @@ import { grey } from '@material-ui/core/colors';
 import { AppBar, Box, CssBaseline, Tab, Tabs, Toolbar, Typography } from '@material-ui/core';
 import PropTypes from "prop-types";
 import SwipeableViews from 'react-swipeable-views';
+import { StateProvider } from '../../state';
 import BodyContent from "../body/BodyContent";
 import train from "../../resources/train.png";
 import './App.css';
@@ -12,32 +13,47 @@ import './App.css';
 function App(props) {
   const [value, setValue] = React.useState(0);
 
-  const initialOoklaFormState =
+  const initialState =
   {
-    useServer: false,
-    serverJson: "",
-    server: "",
-    requestUrl: "ookla/test"
+    ookla:
+    {
+      useServer: false,
+      serverJson: "",
+      server: "",
+      requestUrl: "ookla/test",
+      tableJson: "",
+      isLoading: false,
+      errorSnackbarOpen: false,
+      errorSnackbarMessage: "Request failed..."
+    },
+    iperf:
+    {
+      host: "",
+      port: "",
+      requestUrl: "iperf/test",
+      tableJson: "",
+      isLoading: false,
+      errorSnackbarOpen: false,
+      errorSnackbarMessage: "Request failed..."
+    },
+
   }
 
-  const initialIperfFormState =
-  {
-    host: "",
-    port: "",
-    requestUrl: "iperf/test"
-  }
+  const reducer = (state, newState) => {
+    // merge the old and new state
+    return { ...state, ...newState };
+  };
+
 
   const theme = createMuiTheme({
     palette: {
       primary: { main: grey[300] },
       secondary: { main: "#3b88c3" },
-
     },
     typography: {
       useNextVariants: true,
     },
   });
-
 
   function TabPanel(props) {
     const { children, value, index, ...other } = props;
@@ -61,7 +77,6 @@ function App(props) {
     index: PropTypes.any.isRequired,
     value: PropTypes.any.isRequired,
   };
-
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
@@ -91,7 +106,6 @@ function App(props) {
               <Tabs
                 value={value}
                 onChange={handleChange}
-                aria-label="full width tabs example"
               >
                 <Tab label="ookla" {...a11yProps(0)} />
                 <Tab label="iperf" {...a11yProps(1)} />
@@ -103,12 +117,16 @@ function App(props) {
             index={value}
             onChangeIndex={handleChangeIndex}
           >
-            <TabPanel value={value} index={0} dir={theme.direction}>
-              <BodyContent requestMethod={"GET"} tab={"ookla"} formState={initialOoklaFormState} />
-            </TabPanel>
-            <TabPanel value={value} index={1} dir={theme.direction}>
-              <BodyContent requestMethod={"POST"} tab={"iperf"} formState={initialIperfFormState} />
-            </TabPanel>
+            <StateProvider initialState={initialState.ookla} reducer={reducer} >
+              <TabPanel value={value} index={0} dir={theme.direction}>
+                <BodyContent requestMethod={"GET"} tab={"ookla"} />
+              </TabPanel>
+            </StateProvider>
+            <StateProvider initialState={initialState.iperf} reducer={reducer}>
+              <TabPanel value={value} index={1} dir={theme.direction}>
+                <BodyContent requestMethod={"POST"} tab={"iperf"} />
+              </TabPanel>
+            </StateProvider>
           </SwipeableViews>
         </div>
       </MuiThemeProvider>
