@@ -29,11 +29,9 @@ export default function IperfForm(props) {
 
         const value = event.target.value;
         if (event.target.id === "host") {
-            //setState({ host: value });
             setHost(value);
         }
         if (event.target.id === "port") {
-            //setState({ port: value });
             setPort(value);
         }
     };

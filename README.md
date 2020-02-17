@@ -1,6 +1,6 @@
 # speedtest-app
 -----
-An internet speed test web application leveraging Speedtest-CLI ([https://www.speedtest.net/apps/cli](http://)).
+An internet speed test web application leveraging either Ookla Speedtest-CLI ([https://www.speedtest.net/apps/cli](http://)) or iperf3 ([https://software.es.net/iperf/](http://)).
 Node.js service with React frontend using Material-UI.
 
 Example use-case: test "wired speed" of a computer connected via hard-wired ethernet from any device on your network.
@@ -18,7 +18,9 @@ Example use-case: test "wired speed" of a computer connected via hard-wired ethe
 * Latest stable Node.js runtime release with npm
 * Git
 * Speedtest-CLI ([https://www.speedtest.net/apps/cli](http://))
-   * **note**: if using Windows, you need to add directory that contains speedtest.exe to system Path, so that it can be run globally. (for example: `C:\Projects\ookla-speedtest-1.0.0-win64\`
+   * **note**: if using Windows, you need to add the directory that contains speedtest.exe to system Path, so that it can be run globally. (for example: `C:\Projects\ookla-speedtest-1.0.0-win64\`)
+* iperf3
+   * **note**: if using Windows, you need to add the directory that contains iperf3.exe to system Path, so that it can be run globally. (for example: `C:\Projects\iperf-3.1.3-win64\`)
 
 **installation**
 * clone repository
@@ -52,6 +54,6 @@ location /speedtest/ {
 ![Screenshot](https://moran-network-static.s3.amazonaws.com/speedtest_app_capture.gif)
 
 
-### acknowledgements
+### other acknowledgements
 -----
 * "High-Speed Train" emoji logo/favicon is courtesy of the Twitter Emoji (Twemoji) project: [https://github.com/twitter/twemoji](http://)
