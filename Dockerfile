@@ -1,4 +1,4 @@
-FROM node:12.15.0-buster-slim
+FROM node:lts-slim
 
 RUN apt-get update && \
     apt-get install -y --no-install-recommends \

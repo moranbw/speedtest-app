@@ -1,20 +1,19 @@
-const express = require('express');
+const polka = require('polka');
+const send = require('@polka/send-type');
 const { exec } = require('child_process');
 const fs = require('fs');
-const app = express();
-const bodyParser = require('body-parser');
+const {json} = require('body-parser');
+
+const app = polka();
 const port = 5000;
 
-app.use(bodyParser.urlencoded({ extended: false }))
-app.use(express.json());
+app.use(json())
 
 app.use(function (req, res, next) {
-    res.header("Access-Control-Allow-Origin", "*"); // update to match the domain you will make the request from
-    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+    res.setHeader("Access-Control-Allow-Origin", "*"); // update to match the domain you will make the request from
+    res.setHeader("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
     next();
 });
-
-const server = require('http').Server(app);
 
 // create a GET route to test speed
 app.get('/ookla/test', (req, res) => {
@@ -28,7 +27,7 @@ app.get('/ookla/test', (req, res) => {
         if (err) {
             //some err occurred
             console.error(err);
-            res.status(500).send({ "error": "There was an error while running the speed test." });
+            send(res, 500, { "error": "There was an error while running the speed test." });
         }
         else {
             // the *entire* stdout and stderr (buffered)
@@ -48,10 +47,10 @@ app.get('/ookla/test', (req, res) => {
                     "server name": result.server.name,
                     "server location": result.server.location
                 };
-                res.send(response);
+                send(res, 200, response);
             }
             else {
-                res.status(500).send({ "error": "There was no result from the speed test" });
+                send(res, 500, { "error": "There was no result from the speed test" });
             }
         }
     });
@@ -64,7 +63,7 @@ app.get('/ookla/servers', (req, res) => {
         if (err) {
             //some err occurred
             console.error(err);
-            res.status(500).send({ "error": "There was an error while getting the list of servers." });
+            send(res, 500, { "error": "There was an error while getting the list of servers." });
         }
         else {
             // the *entire* stdout and stderr (buffered)
@@ -72,10 +71,10 @@ app.get('/ookla/servers', (req, res) => {
             console.log(`stderr: ${stderr}`);
             let result = JSON.parse(stdout);
             if (result.type === "serverList") {
-                res.send(result)
+                send(res, 200, result);
             }
             else {
-                res.status(500).send({ "error": "There was no result from the server query" });
+                send(res, 500, { "error": "There was no result from the server query" });
             }
         }
 
@@ -91,14 +90,14 @@ app.post('/iperf/test', (req, res) => {
     exec('iperf3 -J -c ' + host + ' -p ' + port, (err, stdout, stderr) => {
         if (err) {
             console.error(err);
-            res.status(500).send({ "error": err });
+            send(res, 500, { "error": err });
         }
         else {
             console.log(`stdout: ${stdout}`);
             console.log(`stderr: ${stderr}`);
             let result = JSON.parse(stdout);
             if (result.error) {
-                res.status(500).send({"error": err});
+                send(res, 500, { "error": err });
             }
             else {
                 console.log(stdout);
@@ -115,7 +114,7 @@ app.post('/iperf/test', (req, res) => {
                     "bandwidth": (result.sum_received.bits_per_second / 1e6).toFixed(2),
                     "retransmits": result.sum_received.retransmits ? result.sum_received.retransmits : ""
                 }
-                res.send({
+                send(res, 200, {
                     "sender": sender,
                     "receiver": receiver
                 });
@@ -127,11 +126,12 @@ app.post('/iperf/test', (req, res) => {
 //if built client exists, serve static content
 if (fs.existsSync("client/build/index.html")) {
     console.log("production");
-    app.use(express.static('client/build'));
+    const sirv = require('sirv')('client/build');
+    app.use(sirv);
 }
 
 // console.log that your server is up and running
-server.listen(port, () => console.log(`Listening on port ${port}`));
+app.listen(port, () => console.log(`Listening on port ${port}`));
 
 function getMegabitsPerSecond(aBytes, aElapsed) {
     let megaBits = aBytes / 125000;
