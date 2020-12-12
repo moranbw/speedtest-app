@@ -1,6 +1,6 @@
 # speedtest-app <a href="https://hub.docker.com/r/bwmoran/speedtest-app"><img alt="Docker Pulls" align="right" src="https://img.shields.io/docker/pulls/bwmoran/speedtest-app?style=flat-square"></a>
 
-An internet speed test web application leveraging either Ookla Speedtest-CLI <https://www.speedtest.net/apps/cli> or iperf3 <https://software.es.net/iperf/>.
+An internet speed test web application leveraging either Ookla Speedtest-CLI (<https://www.speedtest.net/apps/cli>) or iperf3 (<https://software.es.net/iperf/>).
 Node.js service with React frontend using Material-UI.
 
 Example use-case: test "wired speed" of a computer connected via hard-wired ethernet from any device on your network.
@@ -16,7 +16,7 @@ Example use-case: test "wired speed" of a computer connected via hard-wired ethe
 **dependencies**
 * Latest stable Node.js runtime release with npm
 * Git
-* Speedtest-CLI <https://www.speedtest.net/apps/cli>
+* Speedtest-CLI (<https://www.speedtest.net/apps/cli>)
    * **note**: if using Windows, you need to add the directory that contains speedtest.exe to system Path, so that it can be run globally. (for example: `C:\Projects\ookla-speedtest-1.0.0-win64\`)
 * iperf3
    * **note**: if using Windows, you need to add the directory that contains iperf3.exe to system Path, so that it can be run globally. (for example: `C:\Projects\iperf-3.1.3-win64\`)
