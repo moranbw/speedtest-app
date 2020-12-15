@@ -6,7 +6,7 @@ RUN apt-get update && \
         && \
     apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 379CE192D401AB61 \
         && \
-    echo "deb https://ookla.bintray.com/debian buster main" | tee  /etc/apt/sources.list.d/speedtest.list \
+    echo "deb https://ookla.bintray.com/debian generic main" | tee  /etc/apt/sources.list.d/speedtest.list \
         && \     
     apt-get update \
         && \
