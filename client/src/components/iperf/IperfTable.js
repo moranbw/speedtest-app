@@ -1,6 +1,5 @@
 import React from 'react';
-import MaterialTable from "material-table";
-
+import MaterialTable from '@material-table/core';
 
 export default function IperfTable(props) {
 
