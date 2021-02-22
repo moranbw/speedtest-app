@@ -1,31 +1,8 @@
 import React from 'react';
-import MaterialTable from "material-table";
-
+import MaterialTable from '@material-table/core';
 
 export default function IperfTable(props) {
 
-  /*const createRows = (aJson, aData, aCategory) => {
-    let keys = Object.keys(aJson);
-    let values = Object.values(aJson);
-    let data = [];
-    for (let i = 0; i < keys.length; i++) {
-      data[i] = { property: keys[i], value: values[i] };
-    }
-    aData.push({
-      statistic: "interval",
-      tran: aJson.transfer + " MBytes",
-      bandwidth: aJson.bandwidth + " MBits/Sec",
-      retransmits: aJson.retransmits
-    });
-  };
-
-  let columns = [
-    { title: "", field: "category" },
-    { title: "interval", field: "interval" },
-    { title: "transfer", field: "transfer" },
-    { title: "bandwidth", field: "bandwidth" },
-    { title: "retransmits", field: "retransmits" }
-  ];*/
   let columns = [
     { title: "", field: "statistic" },
     { title: "sender", field: "sender" },

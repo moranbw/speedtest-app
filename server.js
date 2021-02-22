@@ -124,9 +124,9 @@ app.post('/iperf/test', (req, res) => {
 });
 
 //if built client exists, serve static content
-if (fs.existsSync("client/build/index.html")) {
+if (fs.existsSync("client/dist/index.html")) {
     console.log("production");
-    const sirv = require('sirv')('client/build');
+    const sirv = require('sirv')('client/dist');
     app.use(sirv);
 }
 
