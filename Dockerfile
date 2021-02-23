@@ -24,7 +24,7 @@ RUN cd /build-tmp \
         && \
     cp -rt /app/ *.json node_modules server.js \
         && \
-    cp -r client/dist /app/dist/ \
+    cp -r client/dist /app/client/ \
 	&& \
     rm -rf /build-tmp
 
