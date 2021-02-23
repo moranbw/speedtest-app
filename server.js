@@ -168,10 +168,10 @@ if (process.env.PROXY_PATH) {
       target: "http://localhost:5000",
       pathRewrite: (aPath, _req) => {
         if (aPath.endsWith(`/${path}`)) {
-          console.log(aPath.replace(`/${path}`, "/"));
+          console.log("rewrite: " + aPath + " to " + aPath.replace(`/${path}`, "/"));
           return aPath.replace(`/${path}`, "/");
         } else {
-          console.log(aPath.replace(`/${path}/`, "/"));
+          console.log("rewrite: " + aPath + " to " + aPath.replace(`/${path}/`, "/"));
           return aPath.replace(`/${path}/`, "/");
         }
       },
