@@ -34,8 +34,8 @@ Example use-case: test "wired speed" of a computer connected via hard-wired ethe
 
 ### proxy example
 -----
-* set environment variable PROXY_PATH
-    * `docker run -d -p 5000:5000 -e PROXY_PATH="speedtest" --name speedtest-app bwmoran/speedtest-app`
+set environment variable **PROXY_PATH**
+* `docker run -d -p 5000:5000 -e PROXY_PATH="speedtest" --name speedtest-app bwmoran/speedtest-app`
 
 **nginx**
 ```nginx
