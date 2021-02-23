@@ -34,13 +34,13 @@ Example use-case: test "wired speed" of a computer connected via hard-wired ethe
 
 ### proxy example
 -----
+* set environment variable PROXY_PATH
+    * `docker run -d -p 5000:5000 -e PROXY_PATH="speedtest" --name speedtest-app bwmoran/speedtest-app`
+
 **nginx**
 ```nginx
-location = /speedtest {
-    return 302 /speedtest/;
-}
 location /speedtest/ {
-    proxy_pass http://your_ip_or_host:5000/;
+    proxy_pass http://your_ip_or_host:5000;
     proxy_set_header Host $host;
     proxy_set_header X-Real-IP $remote_addr;
     proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
