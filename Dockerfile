@@ -31,4 +31,5 @@ RUN cd /build-tmp \
 WORKDIR /app
 
 EXPOSE 5000
-CMD npm run start
+
+ENTRYPOINT [ "npm", "run", "start"]
