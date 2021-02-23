@@ -10,8 +10,6 @@ const sirv = require("sirv");
 const app = polka();
 const port = 5000;
 
-app.use(json());
-
 app.use(function (_req, res, next) {
   res.setHeader("Access-Control-Allow-Origin", "*"); // update to match the domain you will make the request from
   res.setHeader(
@@ -170,14 +168,19 @@ if (process.env.PROXY_PATH) {
       target: "http://localhost:5000",
       pathRewrite: (aPath, _req) => {
         if (aPath.endsWith(`/${path}`)) {
+          console.log(aPath.replace(`/${path}`, "/"));
           return aPath.replace(`/${path}`, "/");
         } else {
-          return aPath.replace(`/${path}`, "/");
+          console.log(aPath.replace(`/${path}/`, "/"));
+          return aPath.replace(`/${path}/`, "/");
         }
       },
     })
   );
 }
+
+//use json for post request -- needs to be used after proxy.
+app.use(json());
 
 // console.log that your server is up and running
 app.listen(port, () => console.log(`Listening on port ${port}`));
