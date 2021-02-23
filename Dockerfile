@@ -28,6 +28,8 @@ RUN cd /build-tmp \
 	&& \
     rm -rf /build-tmp
 
+USER node
+
 WORKDIR /app
 
 EXPOSE 5000
