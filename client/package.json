@@ -1,6 +1,6 @@
 {
   "name": "speedtest-app-client",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "private": true,
   "dependencies": {
     "@fontsource/roboto": "^4.2.1",
@@ -51,7 +51,5 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  },
-  "proxy": "http://localhost:5000/",
-  "homepage": "."
+  }
 }
