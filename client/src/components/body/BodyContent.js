@@ -47,7 +47,7 @@ export default function BodyContent(props) {
       <OoklaForm onClick={onClick} /> : <IperfForm onClick={onClick} />;
   };
 
-  function onClick(aState) {
+  const onClick = (aState) => {
     let options = {
       method: props.requestMethod
     };

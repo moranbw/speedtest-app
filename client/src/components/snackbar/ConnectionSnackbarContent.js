@@ -44,7 +44,7 @@ const useStyles1 = makeStyles(theme => ({
     },
 }));
 
-function MySnackbarContentWrapper(props) {
+function ConnectionSnackbarContentWrapper(props) {
     const classes = useStyles1();
     const {className, message, onClose, variant, ...other} = props;
     const Icon = variantIcon[variant];
@@ -69,7 +69,7 @@ function MySnackbarContentWrapper(props) {
     );
 }
 
-MySnackbarContentWrapper.propTypes = {
+ConnectionSnackbarContentWrapper.propTypes = {
     className: PropTypes.string,
     message: PropTypes.node,
     onClose: PropTypes.func,
@@ -86,7 +86,7 @@ export default function ConnectionSnackBarContent(props) {
     const classes = useStyles2();
 
     return (
-        <MySnackbarContentWrapper
+        <ConnectionSnackbarContentWrapper
             variant={props.variant}
             className={classes.margin}
             message={props.message}
