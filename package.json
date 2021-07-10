@@ -1,6 +1,6 @@
 {
   "name": "speedtest-app",
-  "version": "0.3.2",
+  "version": "0.3.3",
   "description": "Speedtest App",
   "main": "server.js",
   "scripts": {
@@ -13,7 +13,7 @@
   "dependencies": {
     "@polka/send-type": "^0.5.2",
     "body-parser": "^1.19.0",
-    "http-proxy-middleware": "^2.0.0",
+    "http-proxy-middleware": "^2.0.1",
     "polka": "^0.5.2",
     "sirv": "^1.0.12"
   }
