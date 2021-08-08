@@ -5,6 +5,7 @@ import commonjs from "@rollup/plugin-commonjs";
 import image from "@rollup/plugin-image";
 import resolve from "@rollup/plugin-node-resolve";
 import replace from "@rollup/plugin-replace";
+import url from "@rollup/plugin-url";
 import del from "rollup-plugin-delete";
 import dev from "rollup-plugin-dev";
 import filesize from "rollup-plugin-filesize";
@@ -52,6 +53,13 @@ export default {
     }),
     postcss({
       plugins: [],
+    }),
+    url({
+      // by default, rollup-plugin-url will not handle font files
+      include: ["**/*.woff", "**/*.woff2"],
+      // setting infinite limit will ensure that the files
+      // are always bundled with the code, not copied to /dist
+      limit: Infinity,
     }),
     !production &&
       dev({

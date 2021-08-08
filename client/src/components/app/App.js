@@ -1,9 +1,10 @@
 import React from 'react';
-import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
+import { MuiThemeProvider, createTheme } from '@material-ui/core/styles';
 import { grey } from '@material-ui/core/colors';
 import { AppBar, Box, CssBaseline, Tab, Tabs, Toolbar, Typography } from '@material-ui/core';
 import PropTypes from "prop-types";
 import SwipeableViews from 'react-swipeable-views';
+import WorkSansWoff from "@fontsource/work-sans/files/work-sans-all-400-normal.woff"
 import { StateProvider } from '../../state';
 import BodyContent from "../body/BodyContent";
 import train from "../../resources/train.png";
@@ -44,14 +45,34 @@ function App(props) {
     return { ...state, ...newState };
   };
 
+  const workSans = {
+    fontFamily: 'Work Sans',
+    fontStyle: 'normal',
+    fontDisplay: 'swap',
+    fontWeight: 400,
+    src: `
+      local('Work Sans'),
+      url(${WorkSansWoff}) format('woff')
+    `,
+    unicodeRange:
+      'U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF',
+  };
 
-  const theme = createMuiTheme({
+  const theme = createTheme({
     palette: {
       primary: { main: grey[300] },
       secondary: { main: "#3b88c3" },
     },
     typography: {
+      fontFamily: 'Work Sans',
       useNextVariants: true,
+    },
+    overrides: {
+      MuiCssBaseline: {
+        '@global': {
+          '@font-face': [workSans],
+        },
+      },
     },
   });
 

@@ -93,7 +93,7 @@ export default function BodyContent(props) {
   return (
     <Container fixed>
       <Paper className={classes.root} elevation={10}>
-        <Grid container direction="column" justify='center' alignItems="center" spacing={4}>
+        <Grid container direction="column" justifyContent="center" alignItems="center" spacing={4}>
           <ConditionalResult tableJson={state.tableJson} tab={props.tab} />
           <ConditionalLoad isLoading={state.isLoading} tab={props.tab} />
         </Grid>

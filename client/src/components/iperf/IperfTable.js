@@ -1,7 +1,9 @@
 import React from 'react';
+import { useTheme } from '@material-ui/core';
 import MaterialTable from '@material-table/core';
 
 export default function IperfTable(props) {
+  let theme = useTheme();
 
   let columns = [
     { title: "", field: "statistic" },
@@ -36,7 +38,8 @@ export default function IperfTable(props) {
         toolbar: false,
         paging: false,
         showTitle: false,
-        header: true
+        header: true,
+        rowStyle: { fontFamily: theme.typography.fontFamily, ...theme.typography.body2 }
       }}
     />
   );

@@ -1,7 +1,9 @@
 import React from 'react';
+import { useTheme } from '@material-ui/core';
 import MaterialTable from '@material-table/core';
 
 export default function OoklaTable(props) {
+  let theme = useTheme();
 
   let columns = [
     { title: "", field: "property" },
@@ -24,7 +26,8 @@ export default function OoklaTable(props) {
         toolbar: false,
         paging: false,
         showTitle: false,
-        header: false
+        header: false,
+        rowStyle: { fontFamily: theme.typography.fontFamily, ...theme.typography.body2 },
       }}
     />
   );
