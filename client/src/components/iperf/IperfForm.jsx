@@ -1,4 +1,4 @@
-import React from 'react';
+import {useState} from 'react';
 import {
     Button, FormControl, Grid, TextField
 } from '@material-ui/core';
@@ -22,8 +22,8 @@ const useStyles = makeStyles(theme => ({
 export default function IperfForm(props) {
     const classes = useStyles();
     const [state, setState] = useStateValue();
-    const [host, setHost] = React.useState(state.host);
-    const [port, setPort] = React.useState(state.port);
+    const [host, setHost] = useState(state.host);
+    const [port, setPort] = useState(state.port);
     
     const handleChange = (event) => {
 

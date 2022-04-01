@@ -1,4 +1,4 @@
-import React from 'react';
+
 import { useTheme } from '@material-ui/core';
 import MaterialTable from '@material-table/core';
 

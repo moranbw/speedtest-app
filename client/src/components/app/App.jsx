@@ -1,4 +1,4 @@
-import React from 'react';
+import {useState} from 'react';
 import { MuiThemeProvider, createTheme } from '@material-ui/core/styles';
 import { grey } from '@material-ui/core/colors';
 import { AppBar, Box, CssBaseline, Tab, Tabs, Toolbar, Typography } from '@material-ui/core';
@@ -11,8 +11,8 @@ import train from "../../resources/train.png";
 import './App.css';
 
 
-function App(props) {
-  const [value, setValue] = React.useState(0);
+function App() {
+  const [value, setValue] = useState(0);
 
   const initialState =
   {

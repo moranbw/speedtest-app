@@ -1,4 +1,3 @@
-import React from 'react';
 import { Container, Grid, LinearProgress, Paper, Snackbar } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import { useStateValue } from '../../state';

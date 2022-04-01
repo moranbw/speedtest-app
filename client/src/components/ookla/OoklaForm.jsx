@@ -1,4 +1,3 @@
-import React from 'react';
 import {
     Button, FormControl, FormControlLabel, FormGroup, Grid,
     MenuItem, Select, Switch
