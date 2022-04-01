@@ -1,4 +1,4 @@
-import {useState} from 'react';
+import { useState } from 'react';
 import { MuiThemeProvider, createTheme } from '@material-ui/core/styles';
 import { grey } from '@material-ui/core/colors';
 import { AppBar, Box, CssBaseline, Tab, Tabs, Toolbar, Typography } from '@material-ui/core';
@@ -115,8 +115,8 @@ function App() {
   }
 
   return (
-    <CssBaseline>
-      <MuiThemeProvider theme={theme}>
+    <MuiThemeProvider theme={theme}>
+      <CssBaseline>
         <div className="App">
           <AppBar position="static" color="primary">
             <Toolbar>
@@ -150,8 +150,8 @@ function App() {
             </StateProvider>
           </SwipeableViews>
         </div>
-      </MuiThemeProvider>
-    </CssBaseline>
+      </CssBaseline>
+    </MuiThemeProvider>
   );
 
 }
