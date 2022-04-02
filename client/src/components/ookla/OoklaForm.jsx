@@ -1,5 +1,5 @@
 import {
-    Button, FormControl, FormControlLabel, FormGroup, Grid,
+    Box, Button, FormControl, FormControlLabel, FormGroup, Grid,
     MenuItem, Select, Switch
 } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
@@ -51,7 +51,7 @@ export default function OoklaForm(props) {
                     console.log(aError.message);
                     setState({
                         useServer: !checked, serverJson: "", server: "", requestUrl: "ookla/test",
-                        errorSnackbarOpen: true, 
+                        errorSnackbarOpen: true,
                         errorSnackbarMessage: "Request rejected, " + aError.response.status + ": " + aError.response.statusText
                     });
                 });
@@ -102,7 +102,13 @@ export default function OoklaForm(props) {
                     </FormGroup>
                     <ServerList json={state.serverJson} show={state} />
                 </FormControl>
-                <Button onClick={() => props.onClick()} variant="contained" color="secondary">Run Speed Test</Button>
+                <Button
+                    onClick={() => props.onClick()}
+                    variant="contained"
+                    color="secondary"
+                >
+                    <Box fontWeight={600}>Run Speed Test</Box>
+                </Button>
             </FormControl>
         </Grid>
     );

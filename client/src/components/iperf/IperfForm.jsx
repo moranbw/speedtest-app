@@ -1,6 +1,6 @@
-import {useState} from 'react';
+import { useState } from 'react';
 import {
-    Button, FormControl, Grid, TextField
+    Box, Button, FormControl, Grid, TextField
 } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import { useStateValue } from '../../state';
@@ -24,7 +24,7 @@ export default function IperfForm(props) {
     const [state, setState] = useStateValue();
     const [host, setHost] = useState(state.host);
     const [port, setPort] = useState(state.port);
-    
+
     const handleChange = (event) => {
 
         const value = event.target.value;
@@ -60,11 +60,13 @@ export default function IperfForm(props) {
                     />
                 </FormControl>
                 <Button
-                    onClick={() => props.onClick({host: host, port: port})}
+                    onClick={() => props.onClick({ host: host, port: port })}
                     variant="contained"
                     color="secondary"
                     disabled={checkInput()}
-                >Run Speed Test</Button>
+                >
+                    <Box fontWeight={600}>Run Speed Test</Box>
+                </Button>
             </FormControl>
         </Grid>
     );

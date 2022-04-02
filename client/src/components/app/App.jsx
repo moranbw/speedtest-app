@@ -7,7 +7,7 @@ import SwipeableViews from 'react-swipeable-views';
 import WorkSansWoff from "@fontsource/work-sans/files/work-sans-all-400-normal.woff"
 import { StateProvider } from '../../state';
 import BodyContent from "../body/BodyContent";
-import train from "../../resources/train.png";
+import TrainLogo from "../../logo.svg";
 import './App.css';
 
 
@@ -120,9 +120,9 @@ function App() {
         <div className="App">
           <AppBar position="static" color="primary">
             <Toolbar>
-              <div><img className="logo" alt="logo" src={train} /></div>
+              <div><img className="logo" alt="logo" src={TrainLogo} /></div>
               <Typography className="title" variant="h6" color="inherit">
-                speedtest
+                <Box fontWeight={600}>speedtest</Box>
               </Typography>
               <Tabs
                 value={value}

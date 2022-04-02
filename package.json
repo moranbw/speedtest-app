@@ -1,6 +1,6 @@
 {
   "name": "speedtest-app",
-  "version": "0.4.1",
+  "version": "0.4.2",
   "description": "Speedtest App",
   "main": "server.js",
   "scripts": {
