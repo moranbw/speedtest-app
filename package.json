@@ -1,20 +1,24 @@
 {
   "name": "speedtest-app",
-  "version": "0.4.2",
+  "version": "0.4.3",
   "description": "Speedtest App",
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js",
-    "deploy": "npm install && cd client && npm install && npm run build"
+    "deploy": "npm install && cd client && npm install && npm run build",
+    "update": "ncu -u && cd client && ncu -u"
   },
   "author": "Brian Moran",
   "license": "MIT",
   "dependencies": {
     "@polka/send-type": "^0.5.2",
-    "body-parser": "^1.19.2",
-    "http-proxy-middleware": "^2.0.4",
+    "body-parser": "^1.20.1",
+    "http-proxy-middleware": "^2.0.6",
     "polka": "^0.5.2",
-    "sirv": "^1.0.12"
+    "sirv": "^2.0.2"
+  },
+  "devDependencies": {
+    "npm-check-updates": "^16.4.3"
   }
 }

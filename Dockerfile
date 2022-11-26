@@ -4,9 +4,9 @@ RUN apt-get update && \
     apt-get install -y --no-install-recommends \
         iperf3 apt-transport-https ca-certificates curl gnupg \
         && \
-    curl -o install.deb.sh https://install.speedtest.net/app/cli/install.deb.sh \
+    curl -o script.deb.sh https://packagecloud.io/install/repositories/ookla/speedtest-cli/script.deb.sh \
         && \
-    chmod +x install.deb.sh && ./install.deb.sh && rm install.deb.sh \
+    chmod +x script.deb.sh && ./script.deb.sh && rm script.deb.sh \
         && \
     apt-get install -y --no-install-recommends speedtest \
         && \

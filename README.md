@@ -47,6 +47,13 @@ location /speedtest/ {
     proxy_set_header X-Forwarded-Proto $scheme;
 }
 ```
+**caddy**
+```
+redir /speedtest /speedtest/
+route /speedtest/* {
+    reverse_proxy your_ip_or_host:5000
+}
+```
 
 ### demo
 -----
