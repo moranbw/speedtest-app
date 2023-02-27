@@ -8,7 +8,8 @@ const { createProxyMiddleware } = require("http-proxy-middleware");
 const sirv = require("sirv");
 
 const app = polka();
-const port = 5000;
+const port = process.env.PORT || 5000;
+
 
 app.use(function (_req, res, next) {
   res.setHeader("Access-Control-Allow-Origin", "*"); // update to match the domain you will make the request from
@@ -165,7 +166,7 @@ if (process.env.PROXY_PATH) {
   const path = process.env.PROXY_PATH;
   app.use(
     createProxyMiddleware(`/${path}`, {
-      target: "http://localhost:5000",
+      target: `http://localhost:${port}`,
       pathRewrite: (aPath, _req) => {
         if (aPath.endsWith(`/${path}`)) {
           console.log("rewrite: " + aPath + " to " + aPath.replace(`/${path}`, "/"));

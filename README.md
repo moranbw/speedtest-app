@@ -8,6 +8,7 @@ Example use-case: test "wired speed" of a computer connected via hard-wired ethe
 ### docker install
 -----
 * `docker run -d -p 5000:5000 --name speedtest-app bwmoran/speedtest-app`
+    * port can be changed via environment variable **PORT**: `-p PORT=3000`
 * application should be running at <http://localhost:5000>
 
 
