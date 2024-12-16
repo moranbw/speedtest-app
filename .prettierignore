@@ -1,0 +1,4 @@
+package-lock.json
+**/dist
+**/.terraform
+**/node_modules

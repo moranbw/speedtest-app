@@ -1,0 +1,7 @@
+{
+	"useTabs": true,
+	"singleQuote": true,
+	"jsxSingleQuote": true,
+	"plugins": ["@trivago/prettier-plugin-sort-imports"],
+	"importOrder": ["<THIRD_PARTY_MODULES>", "^[./]"]
+}

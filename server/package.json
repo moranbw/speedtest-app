@@ -1,0 +1,24 @@
+{
+	"name": "speedtest-app-server",
+	"description": "Speedtest App",
+	"type": "module",
+	"main": "server.js",
+	"scripts": {
+    "build": "node build.js",
+		"start": "node src/server.js"
+	},
+	"author": "Brian Moran",
+	"license": "MIT",
+	"dependencies": {
+		"@polka/send-type": "^0.5.2",
+		"body-parser": "^1.20.2",
+		"http-proxy-middleware": "^2.0.6",
+		"polka": "^0.5.2",
+		"sirv": "^2.0.2"
+	},
+	"devDependencies": {
+		"esbuild": "^0.24.0",
+		"esbuild-plugin-clean": "^1.0.1",
+		"npm-check-updates": "^16.4.3"
+	}
+}

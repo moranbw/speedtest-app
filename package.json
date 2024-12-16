@@ -1,24 +1,14 @@
 {
-  "name": "speedtest-app",
-  "version": "0.4.4",
-  "description": "Speedtest App",
-  "main": "server.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js",
-    "deploy": "npm install && cd client && npm install && npm run build",
-    "update": "ncu -u && cd client && ncu -u"
-  },
-  "author": "Brian Moran",
-  "license": "MIT",
-  "dependencies": {
-    "@polka/send-type": "^0.5.2",
-    "body-parser": "^1.20.2",
-    "http-proxy-middleware": "^2.0.6",
-    "polka": "^0.5.2",
-    "sirv": "^2.0.2"
-  },
-  "devDependencies": {
-    "npm-check-updates": "^16.4.3"
-  }
+	"name": "speedtest-app",
+	"version": "0.4.5",
+	"description": "Speedtest App",
+	"scripts": {
+		"format": "npx prettier --write .",
+    "deploy": "cd server && npm install && npm run build && cd ../client && npm install && npm run build",
+		"update": "cd server && ncu -u && cd ../client && ncu -u"
+	},
+	"devDependencies": {
+		"@trivago/prettier-plugin-sort-imports": "^5.2.0",
+		"prettier": "^3.4.2"
+	}
 }

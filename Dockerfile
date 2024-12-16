@@ -1,4 +1,18 @@
+FROM node:lts-slim AS build
+
+COPY client/package*.json /client/
+RUN npm --prefix ./client install ./client
+COPY server/package*.json /server/
+RUN npm --prefix ./server install ./server
+
+COPY . .
+
+RUN npm --prefix ./server run build
+RUN npm --prefix ./client run build
+
 FROM node:lts-slim
+
+COPY --from=build /dist /app
 
 RUN apt-get update && \
     apt-get install -y --no-install-recommends \
@@ -11,20 +25,6 @@ RUN apt-get update && \
     apt-get install -y --no-install-recommends speedtest \
         && \
     rm -rf /var/lib/apt/lists/* \
-	    && \
-    mkdir /app /build-tmp /app/client
-
-COPY . /build-tmp/
-
-RUN cd /build-tmp \
-        && \
-    npm run deploy \
-        && \
-    cp -rt /app/ *.json node_modules server.js \
-        && \
-    cp -r client/dist /app/client/ \
-	    && \
-    rm -rf /build-tmp
 
 USER node
 
@@ -32,4 +32,4 @@ WORKDIR /app
 
 EXPOSE 5000
 
-ENTRYPOINT [ "npm", "run", "start"]
+ENTRYPOINT [ "node", "index.js"]

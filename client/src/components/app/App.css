@@ -1,14 +1,13 @@
 .App {
-  padding-top: 16px;
-  padding-bottom: 16px;
+	padding-top: 16px;
+	padding-bottom: 16px;
 }
 
 .logo {
-  height:50px;
-  padding-right: 10px;
+	height: 50px;
+	padding-right: 10px;
 }
 
 .title {
-  padding-right: 20px;
+	padding-right: 20px;
 }
-

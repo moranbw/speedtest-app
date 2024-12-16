@@ -6,39 +6,47 @@ Node.js service with React frontend using Material-UI.
 Example use-case: test "wired speed" of a computer connected via hard-wired ethernet from any device on your network.
 
 ### docker install
------
-* `docker run -d -p 5000:5000 --name speedtest-app bwmoran/speedtest-app`
-    * port can be changed via environment variable **PORT**: `-p PORT=3000`
-* application should be running at <http://localhost:5000>
 
+---
+
+- `docker run -d -p 5000:5000 --name speedtest-app bwmoran/speedtest-app`
+  - port can be changed via environment variable **PORT**: `-p PORT=3000`
+- application should be running at <http://localhost:5000>
 
 ### old-fashioned install
------
+
+---
+
 **dependencies**
-* Latest stable Node.js runtime release with npm
-* Git
-* Speedtest-CLI (<https://www.speedtest.net/apps/cli>)
-   * **note**: if using Windows, you need to add the directory that contains speedtest.exe to system Path, so that it can be run globally. (for example: `C:\Projects\ookla-speedtest-1.0.0-win64\`)
-* iperf3
-   * **note**: if using Windows, you need to add the directory that contains iperf3.exe to system Path, so that it can be run globally. (for example: `C:\Projects\iperf-3.1.3-win64\`)
+
+- Latest stable Node.js runtime release with npm
+- Git
+- Speedtest-CLI (<https://www.speedtest.net/apps/cli>)
+  - **note**: if using Windows, you need to add the directory that contains speedtest.exe to system Path, so that it can be run globally. (for example: `C:\Projects\ookla-speedtest-1.0.0-win64\`)
+- iperf3
+  - **note**: if using Windows, you need to add the directory that contains iperf3.exe to system Path, so that it can be run globally. (for example: `C:\Projects\iperf-3.1.3-win64\`)
 
 **installation**
-* clone repository
-    * `git clone https://github.com/moranbw/speedtest-app.git`
-* navigate to application directory
-* install dependencies and build client
-    * `npm run deploy`
-* run application
-    * `npm run start`
-* application should be running at <http://localhost:5000>
 
+- clone repository
+  - `git clone https://github.com/moranbw/speedtest-app.git`
+- navigate to application directory
+- install dependencies and build client
+  - `npm run deploy`
+- run application from `dist`
+  - `node index.js`
+- application should be running at <http://localhost:5000>
 
 ### proxy example
------
+
+---
+
 set environment variable **PROXY_PATH**
-* `docker run -d -p 5000:5000 -e PROXY_PATH="speedtest" --name speedtest-app bwmoran/speedtest-app`
+
+- `docker run -d -p 5000:5000 -e PROXY_PATH="speedtest" --name speedtest-app bwmoran/speedtest-app`
 
 **nginx**
+
 ```nginx
 location /speedtest/ {
     proxy_pass http://your_ip_or_host:5000;
@@ -48,7 +56,9 @@ location /speedtest/ {
     proxy_set_header X-Forwarded-Proto $scheme;
 }
 ```
+
 **caddy**
+
 ```
 redir /speedtest /speedtest/
 route /speedtest/* {
@@ -57,10 +67,13 @@ route /speedtest/* {
 ```
 
 ### demo
------
+
+---
+
 ![Screenshot](https://moran-network-static.s3.amazonaws.com/speedtest_app_capture.gif)
 
-
 ### other acknowledgements
------
-* "High-Speed Train" emoji logo/favicon is courtesy of the Twitter Emoji (Twemoji) project: <https://github.com/twitter/twemoji>
+
+---
+
+- "High-Speed Train" emoji logo/favicon is courtesy of the Twitter Emoji (Twemoji) project: <https://github.com/twitter/twemoji>
