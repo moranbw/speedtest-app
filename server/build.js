@@ -17,7 +17,7 @@ const executeBuild = async () => {
 					verbose: true,
 					options: {
 						force: true,
-					}
+					},
 				}),
 			],
 		});

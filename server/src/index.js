@@ -28,7 +28,7 @@ app.get('/ookla/test', (req, res) => {
 	}
 	console.log(req.query.serverId);
 	exec(
-		'speedtest --accept-license --format=json' + serverString,
+		'speedtest --accept-license --accept-gdpr --format=json' + serverString,
 		(err, stdout, stderr) => {
 			if (err) {
 				//some err occurred
@@ -76,7 +76,7 @@ app.get('/ookla/test', (req, res) => {
 app.get('/ookla/servers', (req, res) => {
 	console.log(req.body);
 	exec(
-		'speedtest --accept-license --format=json --servers',
+		'speedtest --accept-license --accept-gdpr --format=json --servers',
 		(err, stdout, stderr) => {
 			if (err) {
 				//some err occurred

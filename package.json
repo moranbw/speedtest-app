@@ -1,10 +1,10 @@
 {
 	"name": "speedtest-app",
-	"version": "0.4.5",
+	"version": "0.5.0",
 	"description": "Speedtest App",
 	"scripts": {
 		"format": "npx prettier --write .",
-    "deploy": "cd server && npm install && npm run build && cd ../client && npm install && npm run build",
+		"deploy": "cd server && npm install && npm run build && cd ../client && npm install && npm run build",
 		"update": "cd server && ncu -u && cd ../client && ncu -u"
 	},
 	"devDependencies": {
